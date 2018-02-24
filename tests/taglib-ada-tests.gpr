@@ -1,0 +1,19 @@
+with "../taglib-ada.gpr";
+
+project Taglib.Ada.Tests is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use ".obj";
+   for Exec_Dir use "bin";
+
+   for Main use ("taglib-tests-main.adb");
+
+   package Compiler is
+      for Switches ("ada") use Taglib.Ada.Compiler'Switches ("ada") ;
+   end Compiler;
+
+   package Binder is
+      for Switches ("ada") use ("-E");
+   end Binder;
+
+end Taglib.Ada.Tests;

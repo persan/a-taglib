@@ -1,0 +1,10 @@
+*.o
+*.so
+*.a
+*.ali
+.obj
+clang_ref_cache.db
+gnatinspect.db
+taglib-loc.xml
+.gen/
+Makefile.conf

@@ -1,0 +1,15 @@
+with "taglib.gpr";
+
+library project Taglib.Ada is
+
+   for Source_Dirs use ("src/**");
+   for Object_Dir use ".obj";
+   for Library_Name use "a-tag";
+   for Library_Dir use "lib";
+
+   package Compiler is
+      for Switches ("ada") use ("-gnatw.Xa", "-gnatf", "-O2", "-gnatQ", "-gnateE");
+   end Compiler;
+
+end Taglib.Ada;
+

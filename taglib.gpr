@@ -1,0 +1,11 @@
+project Taglib is
+
+   for Source_Dirs use ("/usr/include/taglib");
+   for Languages use ("C");
+   for Externally_Built use "True";
+   for Source_Files use ("tag_c.h");
+   package Linker is
+      for Linker_OPtions use ("-ltag_c");
+   end Linker;
+
+end Taglib;
