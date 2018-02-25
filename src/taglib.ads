@@ -8,9 +8,9 @@ package taglib is
 
    type AudioProperties (<>) is tagged limited private;
 
-   procedure set_strings_unicode (unicode : Boolean);  -- /usr/include/taglib/tag_c.h:74
+   procedure set_strings_unicode (unicode : Boolean);
 
-   procedure set_string_management_enabled (management : Boolean);  -- /usr/include/taglib/tag_c.h:82
+   procedure set_string_management_enabled (management : Boolean);
 
    type File_Type is
      (MPEG,
@@ -24,90 +24,89 @@ package taglib is
       MP4,
       ASF);
 
-   function file_new (filename : String) return File;  -- /usr/include/taglib/tag_c.h:113
+   function file_new (filename : String) return File;
 
 
-   function file_new (filename : String; c_type : File_Type) return  File;  -- /usr/include/taglib/tag_c.h:119
+   function file_new (filename : String; c_type : File_Type) return  File;
 
 
 
-   function is_valid (F :  File) return Boolean;  -- /usr/include/taglib/tag_c.h:131
+   function is_valid (F :  File) return Boolean;
 
 
-   function Get_Tag (F :  File'Class) return  Tag;  -- /usr/include/taglib/tag_c.h:137
+   function Get_Tag (F :  File'Class) return  Tag;
 
 
-   function Get_AudioProperties (F :  File'Class) return  AudioProperties;  -- /usr/include/taglib/tag_c.h:143
+   function Get_AudioProperties (F :  File'Class) return  AudioProperties;
 
 
-   procedure save (F : File);  -- /usr/include/taglib/tag_c.h:148
+   procedure save (F : File);
 
 
-   function title (T :  Tag) return String;  -- /usr/include/taglib/tag_c.h:160
+   function title (T :  Tag) return String;
 
 
-   function artist (T :  Tag) return String;  -- /usr/include/taglib/tag_c.h:168
+   function artist (T :  Tag) return String;
 
 
-   function album (T :  Tag) return String;  -- /usr/include/taglib/tag_c.h:176
+   function album (T :  Tag) return String;
 
 
-   function comment (T :  Tag) return String;  -- /usr/include/taglib/tag_c.h:184
+   function comment (T :  Tag) return String;
 
 
-   function genre (T :  Tag) return String;  -- /usr/include/taglib/tag_c.h:192
+   function genre (T :  Tag) return String;
 
 
-   function year (T :  Tag) return Ada.Calendar.Year_Number;  -- /usr/include/taglib/tag_c.h:197
+   function year (T :  Tag) return Ada.Calendar.Year_Number;
 
 
-   function Track (T :  Tag) return Natural;  -- /usr/include/taglib/tag_c.h:202
+   function Track (T :  Tag) return Natural;
 
 
-   procedure set_title (T : in out Tag; title : String);  -- /usr/include/taglib/tag_c.h:209
+   procedure set_title (T : in out Tag; title : String);
 
 
-   procedure set_artist (T : in out Tag; artist : String);  -- /usr/include/taglib/tag_c.h:216
+   procedure set_artist (T : in out Tag; artist : String);
 
 
-   procedure set_album (T : in out Tag; album : String);  -- /usr/include/taglib/tag_c.h:223
+   procedure set_album (T : in out Tag; album : String);
 
 
-   procedure set_comment (T : in out Tag; comment : String);  -- /usr/include/taglib/tag_c.h:230
+   procedure set_comment (T : in out Tag; comment : String);
 
 
-   procedure tag_set_genre (T : in out Tag; genre : String);  -- /usr/include/taglib/tag_c.h:237
+   procedure set_genre (T : in out Tag; genre : String);
 
 
-   procedure tag_set_year (T : in out Tag; year : Ada.Calendar.Year_Number);  -- /usr/include/taglib/tag_c.h:242
+   procedure set_year (T : in out Tag; year : Ada.Calendar.Year_Number);
 
 
-   procedure tag_set_track (T : in out Tag; Track : Positive);  -- /usr/include/taglib/tag_c.h:247
+   procedure set_track (T : in out Tag; Track : Positive);
 
 
-   procedure tag_free_strings;  -- /usr/include/taglib/tag_c.h:252
+   procedure tag_free_strings;
 
 
-   function length (Properties :  AudioProperties) return Natural;  -- /usr/include/taglib/tag_c.h:261
+   function length (Properties :  AudioProperties) return Natural;
 
 
-   function bitrate (Properties :  AudioProperties) return Natural;  -- /usr/include/taglib/tag_c.h:266
+   function bitrate (Properties :  AudioProperties) return Natural;
 
 
-   function samplerate (Properties :  AudioProperties) return Natural;  -- /usr/include/taglib/tag_c.h:271
+   function samplerate (Properties :  AudioProperties) return Natural;
 
 
-   function channels (Properties :  AudioProperties) return Natural;  -- /usr/include/taglib/tag_c.h:276
+   function channels (Properties :  AudioProperties) return Natural;
 
 
    type ID3v2_Encoding is
-     (ID3v2_Latin1,
-      ID3v2_UTF16,
-      ID3v2_UTF16BE,
-      ID3v2_UTF8);
-   pragma Convention (C, ID3v2_Encoding);  -- /usr/include/taglib/tag_c.h:287
+     (Latin1,
+      UTF16,
+      UTF16BE,
+      UTF8);
 
-   procedure id3v2_set_default_text_encoding (encoding : ID3v2_Encoding);  -- /usr/include/taglib/tag_c.h:293
+   procedure set_default_text_encoding (encoding : ID3v2_Encoding);
 
 private
    type TagLib_File;
@@ -120,13 +119,13 @@ private
    type Taglib_Tag;
    type Taglib_Tag_Access is access all Taglib_Tag with Storage_Size => 0;
    type Tag is new Ada.Finalization.Limited_Controlled with record
-      dummy : Taglib_Tag_Access;  -- /usr/include/taglib/tag_c.h:66
+      dummy : Taglib_Tag_Access;
    end record;
 
    type TagLib_AudioProperties;
    type TagLib_AudioProperties_Access is access all TagLib_AudioProperties with Storage_Size => 0;
    type AudioProperties is new Ada.Finalization.Limited_Controlled with record
-      dummy : TagLib_AudioProperties_Access;  -- /usr/include/taglib/tag_c.h:67
+      dummy : TagLib_AudioProperties_Access;
    end record;
 
    type Package_Controler is new  Ada.Finalization.Limited_Controlled with null record;

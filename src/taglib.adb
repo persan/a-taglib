@@ -384,30 +384,30 @@ use all type Interfaces.C.Strings.Chars_Ptr;
    -- tag_set_genre --
    -------------------
 
-   procedure Tag_Set_Genre (T : in out Tag; Genre : String) is
+   procedure Set_Genre (T : in out Tag; Genre : String) is
       Data : Interfaces.C.Strings.Chars_Ptr := New_String (Genre);
    begin
       Taglib_Tag_Set_Genre (T.Dummy, Data);
       Free (Data);
-   end Tag_Set_Genre;
+   end Set_Genre;
 
    ------------------
    -- tag_set_year --
    ------------------
 
-   procedure Tag_Set_Year (T : in out Tag; Year : Ada.Calendar.Year_Number) is
+   procedure Set_Year (T : in out Tag; Year : Ada.Calendar.Year_Number) is
    begin
       Taglib_Tag_Set_Year (T.Dummy, Interfaces.C.unsigned (Year));
-   end Tag_Set_Year;
+   end Set_Year;
 
    -------------------
    -- tag_set_track --
    -------------------
 
-   procedure Tag_Set_Track (T : in out Tag; Track : Positive) is
+   procedure Set_Track (T : in out Tag; Track : Positive) is
    begin
       Taglib_Tag_Set_Track (T.Dummy, Interfaces.C.unsigned (Track));
-   end Tag_Set_Track;
+   end Set_Track;
 
    ----------------------
    -- tag_free_strings --
@@ -458,10 +458,10 @@ use all type Interfaces.C.Strings.Chars_Ptr;
    -- id3v2_set_default_text_encoding --
    -------------------------------------
 
-   procedure Id3v2_Set_Default_Text_Encoding (Encoding : ID3v2_Encoding) is
+   procedure Set_Default_Text_Encoding (Encoding : ID3v2_Encoding) is
    begin
       Taglib_Id3v2_Set_Default_Text_Encoding (Taglib_ID3v2_Encoding'Val(ID3v2_Encoding'Pos(Encoding)));
-   end Id3v2_Set_Default_Text_Encoding;
+   end Set_Default_Text_Encoding;
 
    --------------
    -- Finalize --
